@@ -1,0 +1,28 @@
+---
+- name: Ensure that Avahi is installed and up to date
+  apt:
+    name: avahi
+    state: latest
+  when: not avahi_debug
+
+- name: Create Avahi configuration directory
+  file:
+    path: "{{ avahi_conf_directory }}"
+    state: directory
+    owner: "{{ avahi_conf_directory_owner }}"
+    group: "{{ avahi_conf_directory_group }}"
+    mode: '0755'
+
+- name: Copy Avahi services to their home
+  copy:
+    src: "{{ avahi_services_dir }}/{{ item }}"
+    dest: "{{ avahi_conf_directory }}/{{ item }}"
+    mode: '0644'
+    owner: "{{ avahi_owner }}"
+    group: "{{ avahi_group }}"
+  loop: "{{ avahi_services }}"
+
+- name: Restart Avahi to consume updated configuration
+  service: avahi-daemon
+    state: restarted
+  when: not avahi_debug

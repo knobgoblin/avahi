@@ -1,0 +1,13 @@
+---
+- name: Set debug Avahi variables
+  set_fact:
+    avahi_conf_directory: "{{ avahi_debug_config_path }}"
+    avahi_conf_directory_owner: "{{ avahi_debug_owner }}"
+    avahi_conf_directory_group: "{{ avahi_debug_group }}"
+    avahi_owner: "{{ avahi_debug_owner }}"
+    avahi_group: "{{ avahi_debug_group }}"
+
+- name: Add nobody group 
+  group:
+    name: nobody
+    state: present

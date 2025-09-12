@@ -1,0 +1,5 @@
+---
+- include_tasks: debug.yml
+  when: avahi_debug
+
+- include_tasks: setup-avahi.yml

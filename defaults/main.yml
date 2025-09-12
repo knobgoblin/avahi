@@ -1,0 +1,15 @@
+---
+avahi_conf_directory: /etc/avahi/services
+avahi_conf_directory_owner: root
+avahi_conf_directory_group: root
+avahi_owner: avahi
+avahi_group: avahi
+
+avahi_services_dir: "{{ inventory_dir }}/files/avahi"
+
+# Debug
+
+avahi_debug: False
+avahi_debug_config_path: /var/tmp/avahi_debug
+avahi_debug_owner: 'nobody'
+avahi_debug_group: 'nobody'
