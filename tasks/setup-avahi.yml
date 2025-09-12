@@ -1,7 +1,7 @@
 ---
 - name: Ensure that Avahi is installed and up to date
   apt:
-    name: avahi
+    name: avahi-daemon
     state: latest
   when: not avahi_debug
 
