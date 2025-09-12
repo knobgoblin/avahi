@@ -23,6 +23,7 @@
   loop: "{{ avahi_services }}"
 
 - name: Restart Avahi to consume updated configuration
-  service: avahi-daemon
+  service:
+    name: avahi-daemon
     state: restarted
   when: not avahi_debug
